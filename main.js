@@ -1,26 +1,35 @@
 function preencherPerfil(info) {
 	var template = `
-		<figure>
-			<img src="" alt="">
-		</figure>
-		<h1 class="nome">${info.name}</h1>
+		<h2>${info.name}</h2>
 		<ul>
 			<li>
 				<span>Altura:</span>
-				<span id="altura">${info.height}</span>
+				<span>${info.height}</span>
 			</li>
 			<li>
-				<span>Color del pelo:</span>
-				<span id="cor_cabelo">${info.hair_color}</span>
+				<span>Cor do cabelo:</span>
+				<span>${info.hair_color}</span>
 			</li>
 			<li>
 				<span>Ano de nascimento:</span>
-				<span id="ano_nascimento">${info.birth_year}</span>
+				<span>${info.birth_year}</span>
 			</li>
 			<li>
 				<span>Naves:</span>
 				<span id="naves">
-					<ul></ul>
+					<ul>
+						${
+							info.starships.map(function(nave, i){
+								return `
+									<li>
+										<a href='${nave}'>
+											Nave ${i + 1}
+										</a>
+									</li>
+								`
+							}).join('')
+						}
+					</ul>
 				</span>
 			</li>
 		</ul>
@@ -28,11 +37,12 @@ function preencherPerfil(info) {
 
 	var perfil = document.getElementById("perfil");
 	perfil.innerHTML = template;
-}	
+}
+
 
 // AJAX com jQuery
 $.ajax({
-	url: "https://swapi.co/api/people/32/",
+	url: "https://swapi.co/api/people/1/"
 })
 .done(function(info){
 	preencherPerfil(info)
