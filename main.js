@@ -1,23 +1,34 @@
 function preencherPerfil(info) {
-	var nome = document.querySelector(".nome");
-	var altura = document.querySelector("#altura");
-	var corCabelo = document.querySelector("#cor_cabelo");
-	var anoNascimento = document.querySelector("#ano_nascimento");
-	var naves = document.getElementById("naves")
-	
-	nome.innerHTML = info.name;
-	altura.innerHTML = info.height + " cm";
-	corCabelo.innerHTML = info.hair_color;
-	anoNascimento.innerHTML = info.birth_year;
+	var template = `
+		<figure>
+			<img src="" alt="">
+		</figure>
+		<h1 class="nome">${info.name}</h1>
+		<ul>
+			<li>
+				<span>Altura:</span>
+				<span id="altura">${info.height}</span>
+			</li>
+			<li>
+				<span>Color del pelo:</span>
+				<span id="cor_cabelo">${info.hair_color}</span>
+			</li>
+			<li>
+				<span>Ano de nascimento:</span>
+				<span id="ano_nascimento">${info.birth_year}</span>
+			</li>
+			<li>
+				<span>Naves:</span>
+				<span id="naves">
+					<ul></ul>
+				</span>
+			</li>
+		</ul>
+	`
 
-	$.each(info.starships, function(index, starship){
-		console.log(starship);
-		$(naves).find("ul").append(
-			$("<li>").html(starship)
-		)
-	})
-}
-
+	var perfil = document.getElementById("perfil");
+	perfil.innerHTML = template;
+}	
 
 // AJAX com jQuery
 $.ajax({
