@@ -74,7 +74,7 @@ function preencherPerfil(info) {
 
 // AJAX com jQuery
 $.ajax({
-	url: "https://swapi.co/api/people/1/",
+	url: "https://swapi.co/api/people/32/",
 })
 .done(function(info){
 	preencherPerfil(info)
