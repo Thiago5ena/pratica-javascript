@@ -47,6 +47,18 @@ $.ajax({
 .done(function(info){
 	setTimeout(function(){
 		preencherPerfil(info)
-	}, 2800)
+	}, 2400)
 	
 })
+
+
+// Accordion
+
+$("#accordion h2").click(function() {
+	if ($(this).next("p").is(":visible")) {
+			$(this).next("p").slideToggle();
+	} else {
+			$("#accordion p").slideUp();
+			$(this).next("p").slideDown();
+	}
+});
